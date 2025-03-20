@@ -1,16 +1,16 @@
 import React from "react";
-import "../index.css"; // CSS File को Import करें
+import "./../Style/home.css";
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
-        {/* Food Section */}
-        <div className="footer-section">
+        {/* Brand Section */}
+        <div className="footer-brand">
           <h2>Food</h2>
         </div>
 
-        {/* Company Section */}
+        {/* Company Links */}
         <div className="footer-section">
           <h3>Company</h3>
           <ul>
@@ -23,7 +23,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Contact Us Section */}
+        {/* Contact Links */}
         <div className="footer-section">
           <h3>Contact us</h3>
           <ul>
@@ -33,7 +33,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Legal Section */}
+        {/* Legal Links */}
         <div className="footer-section">
           <h3>Legal</h3>
           <ul>
@@ -44,7 +44,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* We Deliver Section */}
+        {/* Delivery Cities */}
         <div className="footer-section">
           <h3>We deliver to:</h3>
           <ul>
