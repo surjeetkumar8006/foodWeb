@@ -1,44 +1,44 @@
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./../Style/home.css";
-import Card from "../Components/Card";
-import Carousel from "../Pages/Carousel"; 
 
-const Home = () => {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+const Carousel = ({ images = [] }) => {  
+  const [startIndex, setStartIndex] = useState(0);
+  const visibleItems = 5; // एक बार में कितने दिखाने हैं
 
-  let Fetchdata = async () => {
-    try {
-      let response = await fetch("http://localhost:3000/reasturent.json");
-      let datas = await response.json();
-      setData(datas);
-      setLoading(false);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    Fetchdata();
-  }, []);
+  const prevSlide = () => setStartIndex((prev) => Math.max(prev - 1, 0));
+  const nextSlide = () => setStartIndex((prev) => Math.min(prev + 1, images.length - visibleItems));
 
   return (
-    <div className="homePageContainer">
-      {/* Carousel for Top Restaurants */}
-      <Carousel />
+    <div className="carousel-container">
+      <h2 className="carousel-title">Top restaurant chains in Noida</h2>
 
-      <h2>Restaurants with online food delivery in Noida</h2>
-      {loading ? (
-        <p>Loading</p>
+      {images.length === 0 ? (
+        <p className="carousel-empty">No restaurants available</p>
       ) : (
-        <div className="cardContainer">
-          {data.map((data, i) => {
-            return <Card key={i} data={data} />;
-          })}
-        </div>
+        <>
+          <div className="carousel-navigation">
+            <button className="prev-btn" onClick={prevSlide} disabled={startIndex === 0}>
+              &#10094;
+            </button>
+            <button className="next-btn" onClick={nextSlide} disabled={startIndex >= images.length - visibleItems}>
+              &#10095;
+            </button>
+          </div>
+
+          <div className="carousel-content">
+            {images.slice(startIndex, startIndex + visibleItems).map((item, index) => (
+              <div key={index} className="carousel-item">
+                <img src={`images/${item?.info?.cloudinaryImageId}.avif`} alt={item.name || "Unnamed Restaurant"} />
+                <p>{item.info.name || "Unnamed Restaurant"}</p>
+              </div>
+            ))}
+          </div>
+
+        </>
       )}
+
     </div>
   );
 };
 
-export default Home;
+export default Carousel;
