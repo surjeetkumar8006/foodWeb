@@ -3,7 +3,7 @@ import "./../Style/home.css";
 
 const Carousel = ({ images = [] }) => {  
   const [startIndex, setStartIndex] = useState(0);
-  const visibleItems = 5; // एक बार में कितने दिखाने हैं
+  const visibleItems = 5;
 
   const prevSlide = () => setStartIndex((prev) => Math.max(prev - 1, 0));
   const nextSlide = () => setStartIndex((prev) => Math.min(prev + 1, images.length - visibleItems));
@@ -25,14 +25,13 @@ const Carousel = ({ images = [] }) => {
             </button>
           </div>
 
-          <div className="carousel-content">
-            {images.slice(startIndex, startIndex + visibleItems).map((item, index) => (
-              <div key={index} className="carousel-item">
-                <img src={`images/${item?.info?.cloudinaryImageId}.avif`} alt={item.name || "Unnamed Restaurant"} />
-                <p>{item.info.name || "Unnamed Restaurant"}</p>
-              </div>
-            ))}
-          </div>
+          {images.slice(startIndex, startIndex + visibleItems).map((item, index) => (
+  <div key={index} className="carousel-item">
+    <img src={`images/${item.cloudinaryImageId || item.image}.avif`} alt={item.name || "Unnamed Restaurant"} />
+    <p>{item.name || "Unnamed Restaurant"}</p>
+  </div>
+))}
+
 
         </>
       )}
@@ -40,5 +39,4 @@ const Carousel = ({ images = [] }) => {
     </div>
   );
 };
-
 export default Carousel;

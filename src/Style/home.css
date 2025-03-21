@@ -38,8 +38,9 @@ input {
 .cardContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 25px;
+  gap: 10px;
   margin-right: 140px;
+
 }
 
 .cardData {
@@ -253,23 +254,23 @@ input {
 
 }
 
-/* Title Styling */
+
 .carousel-title {
   font-size: 22px;
   font-weight: bold;
-  margin-right:750px;
+  margin-right:700px;
   margin-bottom: 20px;
 }
 
-/* Centered Carousel */
 .carousel-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
   width: 100%;
+  cursor: pointer;
   margin: auto;
-  padding: 0 10px;
+  gap: 3px;
 }
 
 /* Updated Card Style */
@@ -336,12 +337,13 @@ input {
 }
 
 .card {
-  width: 200px;
-  padding: 10px;
-  border-radius: 10px;
-  background: white;
-  text-align: center;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  flex-basis: 22.5%;
+  width: 22.5%;
+  height: 320px;
+  padding: 4px;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid transparent;
 }
 
 .card-img {

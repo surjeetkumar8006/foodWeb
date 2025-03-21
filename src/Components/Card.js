@@ -11,6 +11,7 @@ const Card = ({ data }) => {
           <span className="">3.2 min</span>
         </div>
       </div>
+      
     </div>
   );
 };
