@@ -10,6 +10,7 @@ import Help from "./Pages/Help";
 import Search from "./Pages/Search";
 import Cart from "./Pages/Cart";
 import PageNotFound from "./Pages/PageNotFound";
+import Restaurant from "./Pages/Restaurant";
 
 const a = createBrowserRouter([
   {
@@ -32,6 +33,12 @@ const a = createBrowserRouter([
         path: "/cart",
         element: <Cart />,
       },
+      
+      {
+        path: "/restaurant/:resId",
+        element: <Restaurant />,
+      },
+      
       {
         path: "*",
         element: <PageNotFound />,
@@ -47,7 +54,4 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
