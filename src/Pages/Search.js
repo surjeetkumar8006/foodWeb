@@ -8,10 +8,7 @@ const Search = () => {
   const [inputValue, setInputValue] = useState("");
   const [isInputEmpty, setIsInputEmpty] = useState(true);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-
-  
   const defaultRestaurants = Resturant.slice(0, 8);
-
   useEffect(() => {
     const timerId = setTimeout(() => {
       setIsInputEmpty(inputValue === "");
@@ -69,7 +66,7 @@ const Search = () => {
                 ))}
               </div>
             </div>
-          )}
+)}
         </>
       )}
     </div>

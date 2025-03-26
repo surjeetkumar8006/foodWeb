@@ -8,26 +8,28 @@ const Restaurant = () => {
   const { resId } = useParams();
   console.log("Restaurant ID:", resId);
 
-  // 1) Find restaurant data by resId
   const restaurantData = Re.find((item) => item.info.id === resId);
   if (!restaurantData) {
     return <p>Restaurant not found.</p>;
   }
 
-  // 2) Extract info from restaurantData
-  const { name, rating, totalRatingsString, costForTwo, cuisines, locality, availability } =
-    restaurantData.info;
+  const {
+    name,
+    rating,
+    totalRatingsString,
+    costForTwo,
+    cuisines,
+    locality,
+    availability,
+  } = restaurantData.info;
 
   const isClosed = availability && availability.nextOpenMessage ? true : false;
   const nextOpenTime = availability?.nextOpenMessage || "11:00 AM tomorrow";
 
-  // 3) In your Menu.json, find the object whose title is "Recommended"
-  //    (You can similarly find "Family Combo", "Kids Combo", etc. if needed)
   const recommendedObj = Reb.find(
     (outerObj) => outerObj.card.card.title === "Recommended"
   );
 
-  // 4) Extract the itemCards array (if found), each itemCard has "card"->"info"
   let recommendedItems = [];
   if (recommendedObj) {
     recommendedItems = recommendedObj.card.card.itemCards.map(
@@ -37,13 +39,11 @@ const Restaurant = () => {
 
   return (
     <div className="restPage">
-      {/* Breadcrumb */}
       <div className="path">
         <span>Home / Noida / {name}</span>
       </div>
 
       <div className="restContainerfood">
-        {/* Left Section: Restaurant Info */}
         <div className="restInfo">
           <p className="restName">{name}</p>
           <div className="restaurantService">
@@ -62,7 +62,6 @@ const Restaurant = () => {
           />
         </div>
 
-        {/* Right or Below Section: "Recommended" Menu Items */}
         <div className="restcuisineCont">
           <div className="recommendedSection">
             <h2>Recommended ({recommendedItems.length})</h2>
@@ -71,7 +70,6 @@ const Restaurant = () => {
                 <div key={menuItem.id} className="menuItem">
                   <div className="menuItem-left">
                     <h3 className="menuItem-name">{menuItem.name}</h3>
-                    {/* defaultPrice is in paise, converting to ₹ */}
                     {menuItem.defaultPrice && (
                       <p className="menuItem-price">
                         ₹{(menuItem.defaultPrice / 100).toFixed(2)}
@@ -95,8 +93,6 @@ const Restaurant = () => {
               ))}
             </div>
           </div>
-
-  
         </div>
       </div>
     </div>

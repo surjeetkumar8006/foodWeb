@@ -12,45 +12,28 @@ import Cart from "./Pages/Cart";
 import PageNotFound from "./Pages/PageNotFound";
 import Restaurant from "./Pages/Restaurant";
 
-const a = createBrowserRouter([
+const routes = [
   {
     path: "/",
     element: <App />,
     children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/help",
-        element: <Help />,
-      },
-      {
-        path: "/search",
-        element: <Search />,
-      },
-      {
-        path: "/cart",
-        element: <Cart />,
-      },
-      
-      {
-        path: "/restaurant/:resId",
-        element: <Restaurant />,
-      },
-      
-      {
-        path: "*",
-        element: <PageNotFound />,
-      },
+      { path: "/", element: <Home /> },
+      { path: "/help", element: <Help /> },
+      { path: "/search", element: <Search /> },
+      { path: "/cart", element: <Cart /> },
+      { path: "/restaurant/:resId", element: <Restaurant /> },
+      { path: "*", element: <PageNotFound /> },
     ],
   },
-]);
+];
+
+const router = createBrowserRouter(routes);
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={a}></RouterProvider>
+    <RouterProvider router={router}></RouterProvider>
   </React.StrictMode>
 );
 

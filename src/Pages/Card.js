@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 const Card = ({ data }) => {
   const navigate = useNavigate();
-
+  console.log(data.info.id);
   return (
     <div
       className="card"
